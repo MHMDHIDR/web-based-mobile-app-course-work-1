@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>After School Booking Class</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <header>
+          <div class="flex">
+            <h1 v-text="webappName"></h1>
+            <input
+              class="search"
+              type="search"
+              placeholder="Search for Lessons to book"
+            />
+          </div>
+          <button @click="toggleShowCart" :disabled="totalItemsInTheCart === 0">
+            🛒 {{ `${ totalItemsInTheCart > 1 ? totalItemsInTheCart + ' Items' :
+            totalItemsInTheCart + ' Item'} in cart` }}
+          </button>
+          <button @click="resetCart" :disabled="totalItemsInTheCart === 0">
+            🗑️ Reset Cart
+          </button>
+
+          <button @click="toggleShowCart" v-if="showCart">⇦ Back to Lessons</button>
+        </header>
+        <main>
+          <!-- Chechout view -->
+          <div v-if="showCart">
+            <h2>Shopping Cart</h2>
+            <div v-if="totalItemsInTheCart>0">
+              <ul>
+                <li v-for="(item, index) in cart" :key="item.id + '-' + index">
+                  [ {{ item.bookedClasses }} classes booked ] - {{ item.subject }} - £{{
+                  item.totalPrice }}
+                  <button @click="removeFromCart(item)">Remove</button>
+                </li>
+              </ul>
+              <p>Your total price for all classes booked = £{{ totalCartPrice }}</p>
+              <form>
+                <div class="input-group">
+                  <label for="#name">
+                    Please Enter your full name
+                    <small>(at least 4 characters)</small>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    :disabled="cart.length === 0"
+                    v-model="name"
+                  />
+                </div>
+                <div class="input-group">
+                  <label for="#phone">
+                    Please Enter your phone number
+                    <small>(must be 10 digits)</small>
+                  </label>
+
+                  <input
+                    type="number"
+                    id="phone"
+                    :disabled="cart.length === 0"
+                    v-model="phone"
+                  />
+                </div>
+              </form>
+              <button @click="checkout" :disabled="cart.length === 0 || !isInputValid">
+                Checkout
+              </button>
+            </div>
+            <div v-else>
+              Your Cart is empty, click Back to Lessons button to view the lessons
+            </div>
+          </div>
+          <!-- Lessons view -->
+          <div class="grid-wrapper" v-else>
+            <div class="lesson" v-for="lesson in lessons" :key="lesson.id">
+              <h2 v-text="lesson.subject"></h2>
+              <p v-text="'Location: ' + lesson.location"></p>
+              <p v-text="'Price: £' + lesson.price"></p>
+              <p v-text="'Available Spaces: ' + lesson.spaces"></p>
+              <button @click="addToCart(lesson)" :disabled="lesson.spaces === 0">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      let lessonsBooking = new Vue({
+        el: '#app',
+        data: {
+          webappName: 'After School Booking',
+          showCart: false,
+          lessons: [],
+          cart: [],
+          name: '',
+          phone: ''
+        },
+        methods: {
+          addToCart: function (lesson) {
+            if (lesson.spaces > 0) {
+              lesson.spaces -= 1
+              const existingLesson = this.cart.find(item => item.id === lesson.id)
+              if (existingLesson) {
+                existingLesson.bookedClasses += 1
+                existingLesson.totalPrice += lesson.price
+              } else {
+                const cartLesson = Object.assign({}, lesson, {
+                  bookedClasses: 1,
+                  totalPrice: lesson.price
+                })
+                this.cart.push(cartLesson)
+              }
+            }
+          },
+          removeFromCart: function (lesson) {
+            lesson.spaces += 1
+            const index = this.cart.findIndex(item => item.id === lesson.id)
+            if (index !== -1) {
+              this.cart[index].bookedClasses -= 1
+              this.cart[index].totalPrice -= lesson.price
+              if (this.cart[index].bookedClasses === 0) {
+                this.cart.splice(index, 1)
+              }
+            }
+          },
+          checkout: function () {
+            const confirmCheckout = confirm(
+              'Are you sure you want to confirm purchasing the items in the cart?'
+            )
+            if (!confirmCheckout) {
+              alert('You can go back and add more items or reset your cart')
+            } else {
+              alert('Thank you for your purchase')
+              this.resetCart()
+            }
+          },
+          toggleShowCart: function () {
+            this.showCart = !this.showCart
+          },
+          loadLessons: function () {
+            fetch('lessons.json')
+              .then(response => response.json())
+              .then(dataFromJSON => (this.lessons = dataFromJSON))
+          },
+          resetCart: function () {
+            this.cart = []
+            this.loadLessons()
+          }
+        },
+        computed: {
+          totalItemsInTheCart: function () {
+            return this.cart.length
+          },
+          isInputValid: function () {
+            return this.name.trim().length > 3 && this.phone.trim().length === 10
+          },
+          totalCartPrice: function () {
+            return this.cart.reduce((total, item) => total + item.totalPrice, 0)
+          }
+        },
+        created() {
+          this.loadLessons()
+        }
+      })
+    </script>
+  </body>
+</html>

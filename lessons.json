@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "subject": "Mathematics",
+    "location": "Room 101",
+    "price": 50,
+    "spaces": 10
+  },
+  {
+    "id": 2,
+    "subject": "Art",
+    "location": "Art Studio",
+    "price": 30,
+    "spaces": 15
+  },
+  {
+    "id": 3,
+    "subject": "Science",
+    "location": "Lab A",
+    "price": 40,
+    "spaces": 10
+  },
+  {
+    "id": 4,
+    "subject": "English",
+    "location": "Library",
+    "price": 35,
+    "spaces": 18
+  },
+  {
+    "id": 5,
+    "subject": "History",
+    "location": "Classroom 3",
+    "price": 45,
+    "spaces": 12
+  },
+  {
+    "id": 6,
+    "subject": "Music",
+    "location": "Music Room",
+    "price": 25,
+    "spaces": 25
+  },
+  {
+    "id": 7,
+    "subject": "Dance",
+    "location": "Dance Studio",
+    "price": 30,
+    "spaces": 20
+  },
+  {
+    "id": 8,
+    "subject": "Basketball",
+    "location": "Gymnasium",
+    "price": 20,
+    "spaces": 30
+  },
+  {
+    "id": 9,
+    "subject": "Computer Programming",
+    "location": "Computer Lab",
+    "price": 60,
+    "spaces": 8
+  },
+  {
+    "id": 10,
+    "subject": "Physics",
+    "location": "Lab B",
+    "price": 45,
+    "spaces": 15
+  },
+  {
+    "id": 11,
+    "subject": "Biology",
+    "location": "Lab C",
+    "price": 40,
+    "spaces": 10
+  },
+  {
+    "id": 12,
+    "subject": "Chemistry",
+    "location": "Lab D",
+    "price": 50,
+    "spaces": 9
+  },
+  {
+    "id": 13,
+    "subject": "Soccer",
+    "location": "Soccer Field",
+    "price": 15,
+    "spaces": 40
+  },
+  {
+    "id": 14,
+    "subject": "Yoga",
+    "location": "Wellness Center",
+    "price": 30,
+    "spaces": 20
+  },
+  {
+    "id": 15,
+    "subject": "Cooking",
+    "location": "Kitchen",
+    "price": 25,
+    "spaces": 15
+  },
+  {
+    "id": 16,
+    "subject": "French",
+    "location": "Classroom 5",
+    "price": 35,
+    "spaces": 12
+  },
+  {
+    "id": 17,
+    "subject": "Spanish",
+    "location": "Classroom 6",
+    "price": 35,
+    "spaces": 15
+  },
+  {
+    "id": 18,
+    "subject": "Swimming",
+    "location": "Swimming Pool",
+    "price": 20,
+    "spaces": 25
+  },
+  {
+    "id": 19,
+    "subject": "Robotics",
+    "location": "Robotics Lab",
+    "price": 55,
+    "spaces": 7
+  },
+  {
+    "id": 20,
+    "subject": "Astronomy",
+    "location": "Observatory",
+    "price": 30,
+    "spaces": 12
+  }
+]

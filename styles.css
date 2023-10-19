@@ -1,0 +1,67 @@
+.container {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.flex > h1,
+.flex > .search {
+  flex: 1;
+}
+.search {
+  padding: 0.25em 1em;
+  font-size: 1.3rem;
+}
+.grid-wrapper {
+  --auto-grid-min-size: 16rem;
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+.grid-wrapper .lesson {
+  background-color: #7b3838;
+  color: #ffffff;
+  font-size: 1.25rem;
+  padding: 3rem 1rem;
+  text-align: left;
+  border-radius: 0.75em;
+}
+button {
+  cursor: pointer;
+  margin: 1em 0;
+  padding: 0.75em 1.25em;
+  border-radius: 0.5em;
+  background-color: #e8b1ba;
+  color: #000;
+  font-size: 0.75em;
+  font-weight: bold;
+  border: 1px solid #000;
+  transition: background-color 300ms ease-in-out;
+}
+button:hover {
+  background-color: #cd8d97;
+}
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+  margin-bottom: 1rem;
+}
+.input-group label {
+  user-select: none;
+}
+.input-group input {
+  font-size: 1rem;
+  padding: 0.5em 1em;
+}
