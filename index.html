@@ -35,10 +35,15 @@
           <div v-if="showCart">
             <h2>Shopping Cart</h2>
             <div v-if="totalItemsInTheCart>0">
-              <ul>
+              <ul class="cart-added-items">
                 <li v-for="(item, index) in cart" :key="item.id + '-' + index">
-                  [ {{ item.bookedClasses }} classes booked ] - {{ item.subject }} - £{{
-                  item.totalPrice }}
+                  <img :src="item.image" :alt="item.subject" width="50" height="50" />
+                 
+                    <p>
+                      [ {{ item.bookedClasses }} classes booked ] - {{ item.subject }}
+                      <span>- Total Price:  <strong>£{{item.totalPrice }}</strong> </span>
+                    </p>
+                  </span>
                   <button @click="removeFromCart(item)">Remove</button>
                 </li>
               </ul>

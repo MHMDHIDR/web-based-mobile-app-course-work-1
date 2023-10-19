@@ -26,12 +26,24 @@
   font-family: 'Montserrat', sans-serif;
 }
 .grid-wrapper .lesson {
-  background-color: #7b3838;
+  display: flex;
+  flex-direction: column;
   color: #ffffff;
+  background-color: #7b3838;
+  border-radius: 0.75em;
   font-size: 1.25rem;
   padding: 3rem 1rem;
   text-align: left;
-  border-radius: 0.75em;
+}
+.grid-wrapper .lesson img {
+  margin: 0 auto;
+  max-width: 9.375rem;
+  max-height: 9.375rem;
+}
+.cart-added-items li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 button {
   cursor: pointer;
