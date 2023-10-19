@@ -81,6 +81,7 @@
           <!-- Lessons view -->
           <div class="grid-wrapper" v-else>
             <div class="lesson" v-for="lesson in lessons" :key="lesson.id">
+              <img :src="lesson.image" :alt="lesson.subject" width="150" height="150" />
               <h2 v-text="lesson.subject"></h2>
               <p v-text="'Location: ' + lesson.location"></p>
               <p v-text="'Price: £' + lesson.price"></p>
@@ -162,7 +163,7 @@
             return this.cart.length
           },
           isInputValid: function () {
-            return this.name.trim().length > 3 && this.phone.trim().length === 10
+            return this.name.trim().length > 1 && this.phone.trim().length > 1
           },
           totalCartPrice: function () {
             return this.cart.reduce((total, item) => total + item.totalPrice, 0)
