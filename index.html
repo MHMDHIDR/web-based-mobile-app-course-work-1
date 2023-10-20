@@ -27,14 +27,14 @@
           🗑️ Reset Cart
         </button>
         <!-- Sorting buttons subject - location -  price - spaces -->
-        <div class="sorting">
+        <div class="sorting" v-if="!showCart">
           <button @click="sortBySubject">Sort by Subject</button>
           <button @click="sortByLocation">Sort by Location</button>
           <button @click="sortByPrice">Sort by Price</button>
           <button @click="sortBySpaces">Sort by Spaces</button>
         </div>
 
-        <button @click="toggleShowCart" v-if="showCart">⇦ Back to Lessons</button>
+        <button class="backBtn" @click="toggleShowCart" v-if="showCart">⇦ Back to Lessons</button>
       </header>
       <main>
         <!-- Chechout view -->
