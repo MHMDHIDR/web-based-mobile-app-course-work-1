@@ -55,11 +55,11 @@
             <p>Your total price for all classes booked = £{{ totalCartPrice }}</p>
             <form>
               <div class="input-group">
-                <label for="#name">Please Enter your full name </label>
+                <label for="#name">Please Enter Your Name</label>
                 <input type="text" id="name" :disabled="cart.length === 0" v-model="name" />
               </div>
               <div class="input-group">
-                <label for="#phone"> Please Enter your phone number </label>
+                <label for="#phone">Please Enter Your Phone Number</label>
                 <input type="number" id="phone" :disabled="cart.length === 0" v-model="phone" />
               </div>
             </form>
@@ -197,7 +197,10 @@
           return this.cart.length
         },
         isInputValid: function () {
-          return this.name.trim().length > 1 && this.phone.trim().length > 2
+          const name = this.name.trim()
+          const isPhoneValid = this.phone.trim().length > 2 // has at least 3 numbers
+          const isNameValid = /^[A-Za-z ]+$/.test(name) && name.length > 1// only letters and spaces and has at least 2 characters
+          return isPhoneValid && isNameValid
         },
         totalCartPrice: function () {
           return this.cart.reduce((total, item) => total + item.totalPrice, 0)
