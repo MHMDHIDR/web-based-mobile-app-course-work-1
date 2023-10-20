@@ -95,7 +95,7 @@ button:disabled {
   padding: 0.5em 1em;
 }
 
-.emptyCart {
+.errorMsg {
   border: 1px solid #d9534f;
   border-radius: 4px;
   color: #d9534f;
@@ -103,8 +103,9 @@ button:disabled {
   padding: 15px;
   margin-bottom: 20px;
   text-transform: capitalize;
+  font-weight: bold;
 }
 
-.emptyCart u {
+.errorMsg u {
   color: #000;
 }

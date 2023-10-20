@@ -67,8 +67,9 @@
               Checkout
             </button>
           </div>
-          <p class="emptyCart" v-else>Your Cart is empty, click <u>Back to Lessons</u> button to view the
-            lessons</p>
+          <p class="errorMsg" v-else>
+            Your Cart is empty, click <u>Back to Lessons</u> button to view the lessons
+          </p>
         </div>
         <!-- Lessons view -->
         <div class="grid-wrapper" v-else>
@@ -83,7 +84,7 @@
             </button>
           </div>
           <!-- Search for lessons NOT found! -->
-          <div v-if="filteredAndSortedLessons.length === 0">
+          <div class="errorMsg" v-if="filteredAndSortedLessons.length === 0">
             <p>Sorry, the lessons you are looking for cannot be found.</p>
             <p>Please try a different search or reset your filters.</p>
           </div>
