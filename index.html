@@ -45,7 +45,6 @@
             <ul class="cart-added-items">
               <li v-for="(item, index) in cart" :key="item.id + '-' + index">
                 <img :src="item.image" :alt="item.subject" width="50" height="50" />
-
                 <p>
                   [ {{ item.bookedClasses }} classes booked ] - {{ item.subject }}
                   <span>- Total Price: <strong>£{{item.totalPrice }}</strong> </span>
@@ -57,18 +56,11 @@
             <p>Your total price for all classes booked = £{{ totalCartPrice }}</p>
             <form>
               <div class="input-group">
-                <label for="#name">
-                  Please Enter your full name
-                  <small>(at least 4 characters)</small>
-                </label>
+                <label for="#name">Please Enter your full name </label>
                 <input type="text" id="name" :disabled="cart.length === 0" v-model="name" />
               </div>
               <div class="input-group">
-                <label for="#phone">
-                  Please Enter your phone number
-                  <small>(must be 10 digits)</small>
-                </label>
-
+                <label for="#phone"> Please Enter your phone number </label>
                 <input type="number" id="phone" :disabled="cart.length === 0" v-model="phone" />
               </div>
             </form>
