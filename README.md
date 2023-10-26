@@ -1,8 +1,10 @@
 ### Booking classes online for students using VueJS
 
-> To Access the repo online click [here](https://github.com/MHMDHIDR/web-based-mobile-app-course-work-1) > **or Copy this link: https://github.com/MHMDHIDR/web-based-mobile-app-course-work-1**
+> To Access the repo online click [here](https://github.com/MHMDHIDR/web-based-mobile-app-course-work-1)\
+> **or Copy this link: https://github.com/MHMDHIDR/web-based-mobile-app-course-work-1**
 
-> To view the project online click [here](https://mhmdhidr.github.io/web-based-mobile-app-course-work-1) > **or copy this link: https://mhmdhidr.github.io/web-based-mobile-app-course-work-1**
+> To view the project online click [here](https://mhmdhidr.github.io/web-based-mobile-app-course-work-1)\
+> **or copy this link: https://mhmdhidr.github.io/web-based-mobile-app-course-work-1**
 
 ## Project setup
 
