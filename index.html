@@ -16,6 +16,7 @@
       <header>
         <div class="flex">
           <h1 v-text="webappName"></h1>
+          <!-- Toggle Cart (Show Cart of hide it's view) -->
           <input class="search" type="search" placeholder="Search for Lessons to book" v-model="searchQuery"
             v-if="!showCart" />
         </div>
@@ -26,7 +27,7 @@
         <button @click="resetCart" :disabled="totalItemsInTheCart === 0">
           🗑️ Reset Cart
         </button>
-        <!-- Sorting buttons subject - location -  price - spaces -->
+        <!-- Sorting buttons [subject - location -  price - spaces] -->
         <div class="sorting" v-if="!showCart">
           <button @click="sortBySubject">Sort by Subject</button>
           <button @click="sortByLocation">Sort by Location</button>
@@ -100,14 +101,14 @@
         webappName: 'After School Booking',
         showCart: false,
         searchQuery: '',
-        sortCriteria: 'subject',
+        sortCriteria: 'subject', //default value sorting by subject
         sortDescending: false,
         lessons: [],
         cart: [],
         name: '',
         phone: ''
       },
-      methods: {
+      methods: { // methods are not cached and are re-evaluated on every render
         addToCart: function (lesson) {
           if (lesson.spaces > 0) {
             lesson.spaces -= 1
@@ -178,7 +179,7 @@
           this.toggleSorting();
         }
       },
-      computed: {
+      computed: {// computer properties are cached and only re-evaluated when the dependencies change [when the values of the variables change]
         filteredAndSortedLessons() {
           const filteredLessons = this.lessons.filter((lesson) =>
             lesson.subject.toLowerCase().includes(this.searchQuery.toLowerCase())
@@ -199,14 +200,14 @@
         isInputValid: function () {
           const name = this.name.trim()
           const isPhoneValid = this.phone.trim().length > 2 // has at least 3 numbers
-          const isNameValid = /^[A-Za-z ]+$/.test(name) && name.length > 1// only letters and spaces and has at least 2 characters
+          const isNameValid = /^[A-Za-z]+$/.test(name) && name.length > 1//  only letters and has at least 2 letters [spaces are NOT allowed]
           return isPhoneValid && isNameValid
         },
         totalCartPrice: function () {
           return this.cart.reduce((total, item) => total + item.totalPrice, 0)
         }
       },
-      created() {
+      created() { // created is called only once when the component is created [when the page is loaded]
         this.loadLessons()
       }
     })
