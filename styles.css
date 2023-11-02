@@ -45,12 +45,19 @@
 .grid-wrapper .lesson {
   display: flex;
   flex-direction: column;
-  color: white;
-  background-color: var(--primary-color);
+  justify-content: space-between;
+  color: var(--primary-color);
+  background-color: white;
+  border: .15em solid var(--primary-color);
   border-radius: 0.75em;
   font-size: 1.25rem;
   padding: 3rem 1.25rem;
   text-align: left;
+  transition: box-shadow 300ms ease-in-out;
+}
+
+.grid-wrapper .lesson:hover {
+  box-shadow: 0 0 1em rgba(33, 33, 33, .2);
 }
 
 .grid-wrapper .lesson img {
